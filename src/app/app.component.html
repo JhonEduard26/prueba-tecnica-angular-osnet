@@ -1,19 +1,1 @@
-<shared-header></shared-header>
-<main class="mx-auto max-w-screen-xl mt-20 px-4 py-8 md:py-12 2xl:px-0">
-  <div
-    class="mb-4 grid justify-items-center gap-4 sm:grid-cols-2 md:mb-8 lg:grid-cols-3 xl:grid-cols-4"
-  >
-    @for (product of currentProducts(); track $index) {
-    <shared-product-card [product]="product"></shared-product-card>
-    }
-  </div>
-
-  <shared-paginator
-    [currentPage]="currentPage()"
-    [totalPages]="totalPages()"
-    (previousPage)="handlePreviousPage()"
-    (nextPage)="handleNextPage()"
-  ></shared-paginator>
-</main>
-
 <router-outlet />
