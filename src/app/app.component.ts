@@ -1,15 +1,18 @@
-import { Component, inject } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { AuthService } from '@auth0/auth0-angular';
-import { AuthButtonComponent } from "./auth/components/auth-button/auth-button.component";
+import { HeaderComponent } from './shared/components/header/header.component';
+import { initFlowbite } from 'flowbite';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, AuthButtonComponent],
+  imports: [RouterOutlet, HeaderComponent],
   templateUrl: './app.component.html',
-  styleUrl: './app.component.css'
+  styleUrl: './app.component.css',
 })
-export class AppComponent {
-  title = 'prueba-tecnica-angular-osnet';
-  private readonly authService = inject(AuthService);
+export class AppComponent implements OnInit {
+  public title = 'prueba-tecnica-angular-osnet';
+
+  ngOnInit(): void {
+    initFlowbite();
+  }
 }

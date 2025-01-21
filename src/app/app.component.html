@@ -1,6 +1,8 @@
-<main>
-  <h1 class="text-4xl font-semibold">Hola mundo {{ title }}</h1>
-  <app-auth-button></app-auth-button>
+<shared-header></shared-header>
+<main class="mx-auto max-w-screen-xl mt-20 px-4 py-8 md:py-12 2xl:px-0">
+  <div className="mb-4 grid justify-items-center gap-4 sm:grid-cols-2 md:mb-8 lg:grid-cols-3 xl:grid-cols-4">
+    <h1>Hola mundo</h1>
+  </div>
 </main>
 
 <router-outlet />
