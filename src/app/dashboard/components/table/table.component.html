@@ -1,0 +1,59 @@
+<div class="relative overflow-x-auto shadow-md sm:rounded-lg">
+  <table class="w-full text-sm text-left rtl:text-right text-gray-500">
+    <thead class="text-xs text-gray-700 uppercase bg-gray-50">
+      <tr>
+        <th scope="col" class="px-4 py-3">Id</th>
+        <th scope="col" class="px-4 py-3">Imagen</th>
+        <th scope="col" class="px-4 py-3">Nombre</th>
+        <th scope="col" class="px-4 py-3">Categoria</th>
+        <th scope="col" class="px-4 py-3">Precio</th>
+        <th scope="col" class="px-4 py-3">
+          <span class="sr-only">Editar</span>
+        </th>
+        <th scope="col" class="px-4 py-3">
+          <span class="sr-only">Eliminar</span>
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      @for (product of products; track $index) {
+      <tr class="bg-white border-b hover:bg-gray-50">
+        <th scope="row" class="px-4 py-2 font-medium text-gray-900">
+          {{ product.id }}
+        </th>
+        <td class="flex justify-center items-center px-4 py-2">
+          <img
+            class="aspect-square object-contain"
+            width="44"
+            height="44"
+            [src]="product.image"
+            [alt]="product.title"
+          />
+        </td>
+        <th scope="row" class="px-4 py-2 font-medium text-gray-900">
+          {{ product.title }}
+        </th>
+        <td class="px-4 py-2 capitalize">{{ product.category }}</td>
+        <td class="px-4 py-2">${{ product.price }}</td>
+        <td class="px-4 py-2 text-right">
+          <!-- onClick={() => handleUpdateProduct(product.id, product)} -->
+          <button class="font-medium text-blue-600 hover:underline">
+            Editar
+          </button>
+          <!-- <UpdateProductForm product="{product}" categories="{categories}" /> -->
+        </td>
+        <td class="px-4 py-2 text-right">
+          <!-- onClick={() => handleDeleteProduct(product.id)} -->
+          <button
+            class="font-medium text-red-600 hover:underline"
+            type="button"
+            (click)="onDeleteProduct(product.id)"
+          >
+            Eliminar
+          </button>
+        </td>
+      </tr>
+      }
+    </tbody>
+  </table>
+</div>
