@@ -1,0 +1,6 @@
+<apx-chart
+  [series]="getAveragePricesByCategory().series"
+  [chart]="chartOptions.chart!"
+  [plotOptions]="chartOptions.plotOptions!"
+  [xaxis]="{ categories: getAveragePricesByCategory().categories }"
+></apx-chart>

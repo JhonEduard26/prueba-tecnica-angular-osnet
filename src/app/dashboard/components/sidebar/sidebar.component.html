@@ -7,7 +7,7 @@
     <ul class="space-y-2 font-medium">
       <li>
         <a
-          href="#"
+          href="/dashboard"
           class="flex items-center p-2 text-gray-900 rounded-lg hover:bg-gray-100 group"
         >
           <svg
@@ -29,7 +29,7 @@
       </li>
       <li>
         <a
-          href="#"
+          href="/dashboard/productos"
           class="flex items-center p-2 text-gray-900 rounded-lg hover:bg-gray-100 group"
         >
           <svg
@@ -47,9 +47,9 @@
         </a>
       </li>
       <li>
-        <a
-          href="#"
-          class="flex items-center p-2 text-gray-900 hover:text-red-600 rounded-lg hover:bg-gray-100 group"
+        <button
+          class="flex items-center w-full p-2 text-gray-900 hover:text-red-600 rounded-lg hover:bg-gray-100 group"
+          (click)="auth.logout()"
         >
           <svg
             class="flex-shrink-0 w-5 h-5 text-gray-500 transition duration-75 group-hover:text-red-600"
@@ -72,8 +72,8 @@
             </g>
           </svg>
 
-          <span class="flex-1 ms-3 whitespace-nowrap">Cerrar sesión</span>
-        </a>
+          <span class="ms-3 whitespace-nowrap">Cerrar sesión</span>
+        </button>
       </li>
     </ul>
   </div>

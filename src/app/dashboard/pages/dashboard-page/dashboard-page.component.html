@@ -3,7 +3,28 @@
 
 <div class="p-4 sm:ml-64">
   <div class="mt-14 p-4">
-    <h1>Dashboard</h1>
+    @if (products().length === 0) {
+    <shared-loader></shared-loader>
+    } @else {
+    <div class="mb-6 p-5 bg-white rounded-lg shadow">
+      <h5 class="mb-5 text-center">Distribución de productos por categoría</h5>
+      <dashboard-category-distribution
+        [data]="products()"
+      ></dashboard-category-distribution>
+    </div>
+
+    <div class="mb-6 p-5 bg-white rounded-lg shadow">
+      <h5 class="mb-5 text-center">Precio promedio por categoría</h5>
+      <dashboard-price-by-category
+        [data]="products()"
+      ></dashboard-price-by-category>
+    </div>
+
+    <div class="mb-6 p-5 bg-white rounded-lg shadow">
+      <h5 class="mb-5 text-center">Distribución de productos por rating</h5>
+      <dashboard-rating-distribution [data]="products()">
+      </dashboard-rating-distribution>
+    </div>
+    }
   </div>
 </div>
-

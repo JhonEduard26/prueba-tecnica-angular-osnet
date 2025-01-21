@@ -4,10 +4,11 @@ import { ApiService } from '../../services/api.service';
 import { HeaderComponent } from '../../components/header/header.component';
 import { ProductCardComponent } from '../../components/product-card/product-card.component';
 import { PaginatorComponent } from '../../components/paginator/paginator.component';
+import { LoaderComponent } from "../../components/loader/loader.component";
 
 @Component({
   selector: 'shared-home-page',
-  imports: [HeaderComponent, ProductCardComponent, PaginatorComponent],
+  imports: [HeaderComponent, ProductCardComponent, PaginatorComponent, LoaderComponent],
   templateUrl: './home-page.component.html',
   styles: ``,
 })
