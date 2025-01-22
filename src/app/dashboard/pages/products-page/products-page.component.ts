@@ -3,10 +3,11 @@ import { LoaderComponent } from '../../../shared/components/loader/loader.compon
 import { TableComponent } from '../../components/table/table.component';
 import { ApiService } from '../../../shared/services/api.service';
 import { Category, Product } from '../../../shared/types';
+import { CreateProductFormComponent } from '../../components/create-product-form/create-product-form.component';
 
 @Component({
   selector: 'dashboard-products-page',
-  imports: [LoaderComponent, TableComponent],
+  imports: [LoaderComponent, TableComponent, CreateProductFormComponent],
   templateUrl: './products-page.component.html',
   styles: ``,
 })
@@ -33,6 +34,20 @@ export class ProductsPageComponent implements OnInit {
     this.apiService.getCategories().subscribe({
       next: (categories) => {
         this.categories.set(categories);
+      },
+      error: (err) => console.error(err),
+    });
+  }
+
+  handleCreateProduct(product: Omit<Product, 'id'>) {
+    const newProduct = {
+      ...product,
+      id: this.products().length + 1,
+    };
+
+    this.apiService.createProduct(newProduct).subscribe({
+      next: () => {
+        this.products.update((products) => [...products, newProduct]);
       },
       error: (err) => console.error(err),
     });

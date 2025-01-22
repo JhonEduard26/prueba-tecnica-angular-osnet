@@ -1,13 +1,9 @@
 <div class="flex justify-between items-center mb-12">
   <h2>Listado de productos</h2>
-  <!-- (click)="{() => handleCreateProduct()}" -->
-  <button
-    type="button"
-    class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 focus:outline-none"
-  >
-    Agregar producto
-  </button>
-  <!-- <CreateProductForm categories={categories} /> -->
+  <dashboard-create-product-form
+    [categories]="categories()"
+    (createProduct)="handleCreateProduct($event)"
+  ></dashboard-create-product-form>
 </div>
 
 @if (false) {
@@ -19,13 +15,3 @@
   (deleteProduct)="handleDeleteProduct($event)"
 ></dashboard-table>
 }
-<!-- {isLoading ? (
-  <Loader />
-) : (
-  <Table
-    products={products}
-    categories={categories}
-    onDeleteProduct={onDeleteProduct}
-    onUpdateProduct={onUpdateProduct}
-  />
-)} -->

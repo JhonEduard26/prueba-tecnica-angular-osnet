@@ -17,6 +17,10 @@ export class ApiService {
     return this.http.get<Category[]>(`${this.baseUrl}/products/categories`);
   }
 
+  createProduct(product: Product) {
+    return this.http.post(`${this.baseUrl}/products`, product);
+  }
+
   deleteProduct(id: number) {
     return this.http.delete(`${this.baseUrl}/products/${id}`);
   }
