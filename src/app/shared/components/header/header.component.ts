@@ -1,6 +1,7 @@
 import { AsyncPipe, DOCUMENT } from '@angular/common';
-import { Component, inject } from '@angular/core';
+import { Component, inject, Input } from '@angular/core';
 import { AuthService } from '@auth0/auth0-angular';
+import { Category } from '../../types';
 
 @Component({
   selector: 'shared-header',
@@ -9,6 +10,8 @@ import { AuthService } from '@auth0/auth0-angular';
   styles: ``
 })
 export class HeaderComponent {
+  @Input() categories: Category[] = [];
+
   public document: Document = inject(DOCUMENT);
   public auth = inject(AuthService);
 

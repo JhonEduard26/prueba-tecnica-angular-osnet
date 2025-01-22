@@ -85,7 +85,7 @@
         <label
           for="category"
           class="block mb-2 text-sm font-medium text-gray-900"
-          >Categoria</label
+          >Categoría</label
         >
         <select
           id="category"
@@ -93,7 +93,6 @@
           class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5"
           required
         >
-          <option disabled selected="">Elige una categoria</option>
           @for (cat of categories; track $index) {
           <option [value]="cat">{{ cat }}</option>
           }

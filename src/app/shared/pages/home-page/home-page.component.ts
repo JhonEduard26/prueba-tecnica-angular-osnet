@@ -1,5 +1,5 @@
 import { Component, computed, inject, signal } from '@angular/core';
-import { Product } from '../../types';
+import { Category, Product } from '../../types';
 import { ApiService } from '../../services/api.service';
 import { HeaderComponent } from '../../components/header/header.component';
 import { ProductCardComponent } from '../../components/product-card/product-card.component';
@@ -15,6 +15,7 @@ import { LoaderComponent } from "../../components/loader/loader.component";
 export class HomePageComponent {
   private apiService = inject(ApiService);
   products = signal<Product[]>([]);
+  categories = signal<Category[]>([]);
   currentPage = signal<number>(1);
   pageSize = 5;
   totalPages = computed(() =>
@@ -28,12 +29,22 @@ export class HomePageComponent {
 
   ngOnInit(): void {
     this.getProducts();
+    this.getCategories();
   }
 
   private getProducts() {
     this.apiService.getProducts().subscribe({
       next: (products) => {
         this.products.set(products);
+      },
+      error: (err) => console.error(err),
+    });
+  }
+
+  private getCategories() {
+    this.apiService.getCategories().subscribe({
+      next: (categories) => {
+        this.categories.set(categories);
       },
       error: (err) => console.error(err),
     });

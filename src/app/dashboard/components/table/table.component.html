@@ -5,7 +5,7 @@
         <th scope="col" class="px-4 py-3">Id</th>
         <th scope="col" class="px-4 py-3">Imagen</th>
         <th scope="col" class="px-4 py-3">Nombre</th>
-        <th scope="col" class="px-4 py-3">Categoria</th>
+        <th scope="col" class="px-4 py-3">Categoría</th>
         <th scope="col" class="px-4 py-3">Precio</th>
         <th scope="col" class="px-4 py-3">
           <span class="sr-only">Editar</span>
@@ -43,13 +43,10 @@
           ></dashboard-update-product-form>
         </td>
         <td class="px-4 py-2 text-right">
-          <button
-            class="font-medium text-red-600 hover:underline"
-            type="button"
-            (click)="onDeleteProduct(product.id)"
-          >
-            Eliminar
-          </button>
+          <dashboard-confirm-alert
+            [productId]="product.id"
+            (confirmAction)="onDeleteProduct($event)"
+          ></dashboard-confirm-alert>
         </td>
       </tr>
       }
