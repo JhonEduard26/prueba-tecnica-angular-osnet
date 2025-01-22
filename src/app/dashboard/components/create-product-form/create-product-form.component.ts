@@ -25,8 +25,6 @@ export class CreateProductFormComponent {
     event.preventDefault();
     const target = event.target as HTMLFormElement | null;
     if (target) {
-      console.log((target[0] as HTMLInputElement).value);
-
       const title = (target[0] as HTMLInputElement).value;
       const description = (target[1] as HTMLInputElement).value;
       const price = Number((target[2] as HTMLInputElement).value);

@@ -53,6 +53,19 @@ export class ProductsPageComponent implements OnInit {
     });
   }
 
+  handleUpdateProduct(product: Product) {
+    this.apiService.updateProduct(product).subscribe({
+      next: () => {
+        this.products.update((products) => {
+          const index = products.findIndex((p) => p.id === product.id);
+          products[index] = product;
+          return products;
+        });
+      },
+      error: (err) => console.error(err),
+    });
+  }
+
   handleDeleteProduct(id: number) {
     this.apiService.deleteProduct(id).subscribe({
       next: () => {

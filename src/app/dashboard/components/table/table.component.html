@@ -36,14 +36,13 @@
         <td class="px-4 py-2 capitalize">{{ product.category }}</td>
         <td class="px-4 py-2">${{ product.price }}</td>
         <td class="px-4 py-2 text-right">
-          <!-- onClick={() => handleUpdateProduct(product.id, product)} -->
-          <button class="font-medium text-blue-600 hover:underline">
-            Editar
-          </button>
-          <!-- <UpdateProductForm product="{product}" categories="{categories}" /> -->
+          <dashboard-update-product-form
+            [product]="product"
+            [categories]="categories"
+            (updateProduct)="onUpdateProduct($event)"
+          ></dashboard-update-product-form>
         </td>
         <td class="px-4 py-2 text-right">
-          <!-- onClick={() => handleDeleteProduct(product.id)} -->
           <button
             class="font-medium text-red-600 hover:underline"
             type="button"

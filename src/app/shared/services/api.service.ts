@@ -21,6 +21,10 @@ export class ApiService {
     return this.http.post(`${this.baseUrl}/products`, product);
   }
 
+  updateProduct(product: Product) {
+    return this.http.put(`${this.baseUrl}/products/${product.id}`, product);
+  }
+
   deleteProduct(id: number) {
     return this.http.delete(`${this.baseUrl}/products/${id}`);
   }

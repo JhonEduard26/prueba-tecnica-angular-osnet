@@ -1,0 +1,129 @@
+<button
+  class="font-medium text-blue-600 hover:underline"
+  (click)="openDialog()"
+>
+  Editar
+</button>
+
+<dialog
+  #updateDialog
+  class="w-full max-w-md p-5 rounded-lg text-start md:p-8 backdrop:bg-black backdrop:bg-opacity-50"
+>
+  <form #updateForm (submit)="onSubmit($event)" method="dialog">
+    <div class="flex justify-between items-center pb-4 mb-4 border-b">
+      <h4 class="">Actualizar producto</h4>
+      <button
+        type="button"
+        class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center"
+        (click)="onCloseDialog()"
+        >
+        <svg
+          class="w-6 h-6 text-gray-800"
+          aria-hidden="true"
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          fill="none"
+          viewBox="0 0 24 24"
+        >
+          <path
+            stroke="currentColor"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M6 18 17.94 6M18 18 6.06 6"
+          />
+        </svg>
+      </button>
+    </div>
+
+    <div class="mb-5">
+      <label
+        htmlFor="title"
+        class="block mb-2 text-sm font-medium text-gray-900"
+      >
+        Título del producto
+      </label>
+      <input
+        type="text"
+        id="title"
+        name="title"
+        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+        placeholder="Nombre del producto"
+        [defaultValue]="product.title"
+        required
+      />
+    </div>
+    <div class="mb-5">
+      <label
+        htmlFor="description"
+        class="block mb-2 text-sm font-medium text-gray-900"
+      >
+        Decripción
+      </label>
+      <textarea
+        id="description"
+        name="description"
+        rows="3"
+        class="overflow-y-auto bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+        [defaultValue]="product.description"
+        required
+      ></textarea>
+    </div>
+    <div class="mb-5">
+      <label
+        htmlFor="price"
+        class="block mb-2 text-sm font-medium text-gray-900"
+      >
+        Precio:
+      </label>
+      <input
+        type="number"
+        id="price"
+        name="price"
+        step="any"
+        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+        placeholder="$500"
+        [defaultValue]="product.price"
+        min="1"
+        required
+      />
+    </div>
+
+    <div class="mb-5">
+      <label
+        htmlFor="categories"
+        class="block mb-2 text-sm font-medium text-gray-900"
+      >
+        Categoría:
+      </label>
+      <select
+        id="categories"
+        name="category"
+        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+      >
+        @for (cat of categories; track $index) {
+        <option [value]="cat" [selected]="cat === product.category">
+          {{ cat }}
+        </option>
+        }
+      </select>
+    </div>
+
+    <menu class="mt-12 text-end">
+      <button
+        type="submit"
+        class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 focus:outline-none"
+      >
+        Actualizar
+      </button>
+      <button
+        type="button"
+        class="py-2.5 px-5 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100"
+        (click)="onCloseDialog()"
+      >
+        Cancelar
+      </button>
+    </menu>
+  </form>
+</dialog>
