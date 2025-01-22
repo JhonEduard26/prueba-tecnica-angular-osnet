@@ -3,6 +3,7 @@ import { DashboardPageComponent } from './dashboard/pages/dashboard-page/dashboa
 import { HomePageComponent } from './shared/pages/home-page/home-page.component';
 import { ProductsPageComponent } from './dashboard/pages/products-page/products-page.component';
 import { ChartsPageComponent } from './dashboard/pages/charts-page/charts-page.component';
+import { authGuardFn } from '@auth0/auth0-angular';
 
 export const routes: Routes = [
   {
@@ -12,6 +13,7 @@ export const routes: Routes = [
   {
     path: 'dashboard',
     component: DashboardPageComponent,
+    canActivate: [authGuardFn],
     children: [
       {
         path: '',
@@ -22,5 +24,9 @@ export const routes: Routes = [
         component: ProductsPageComponent,
       },
     ],
+  },
+  {
+    path: '**',
+    redirectTo: '',
   },
 ];
